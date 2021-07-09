@@ -97,11 +97,12 @@ pixels.show()
 
 GPIO.setwarnings(False) # Ignore warning for now
 #GPIO.setmode(GPIO.BOARD) # Use physical pin numsbering
-GPIO.setup(button_fart, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
-GPIO.setup(button_speech, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
+#GPIO.setmode(GPIO.BCM)
+GPIO.setup(button_fart, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+GPIO.setup(button_speech, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 
-GPIO.add_event_detect(button_fart,GPIO.RISING,callback=button_fart_callback) # Setup event on pin 10 rising edge
-GPIO.add_event_detect(button_speech,GPIO.RISING,callback=button_speech_callback) # Setup event on pin 18 rising edge
+GPIO.add_event_detect(button_fart,GPIO.BOTH,callback=button_fart_callback) # Setup event on pin 10 rising edge
+GPIO.add_event_detect(button_speech,GPIO.BOTH,callback=button_speech_callback) # Setup event on pin 18 rising edge
 
 #message = input("Press enter to quit\n\n") # Run until someone presses enter
 while 1:
